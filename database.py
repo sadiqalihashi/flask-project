@@ -35,7 +35,7 @@ sales=get_sales()
 print(sales)
 
 def insert_sales():
- cur.execute("insert into sales(pid,quantity,created_at)values(3,5,'2026-07-10')")
+ cur.execute("insert into sales(pid,quantity)values(3,5)")
  conn.commit()
 
 insert_sales()
