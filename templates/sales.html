@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %} sales {% endblock %}
+{% block content %} 
+
+
+<div>
+
+   <p>this is stocks</p>
+
+
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add sales
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Adding sales</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/add_product" method="post" > 
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">pid</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" name="pid">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">quantity</label>
+                                <input type="number" class="form-control" id="exampleInputPassword1" name="quantity">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">created at</label>
+                                <input type="number" class="form-control" id="exampleInputPassword1" name="created_at">
+                            </div>
+                           
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Add sale</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+
+        <table id="example" class="table table-striped">
+        <thead>
+            <tr>
+                <th>sales ID</th>
+                <th>pid</th>
+                <th>quantity</th>
+                <th>created at</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for sales in sales_data %}
+            <tr>
+                <td>{{ sales[0] }}</td>
+                <td>{{ sales[1] }}</td>
+                <td>{{ sales[2] }}</td>
+                <td>{{ sales[3] }}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+
+
+</div>
+
+    
+
+
+{% endblock %}

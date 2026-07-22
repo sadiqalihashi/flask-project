@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %} stock {% endblock %}
+{% block content %} 
+
+
+<div>
+
+   <p>this is stocks</p>
+
+   <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add stock
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Adding stocks</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/add_product" method="post" > 
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">pid</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" name="pid">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">stock_quantity</label>
+                                <input type="number" class="form-control" id="exampleInputPassword1" name="stock_quantity">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">created_at</label>
+                                <input type="number" class="form-control" id="exampleInputPassword1" name="created_at">
+                            </div>
+                           
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Add stock</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+        <table id="example" class="table table-striped">
+        <thead>
+            <tr>
+                <th>stock ID</th>
+                <th>pid</th>
+                <th>stock quantity</th>
+                <th>created at</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for stocks in stock_data %}
+            <tr>
+                <td>{{ stocks[0] }}</td>
+                <td>{{ stocks[1] }}</td>
+                <td>{{ stocks[2] }}</td>
+                <td>{{ stocks[3] }}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

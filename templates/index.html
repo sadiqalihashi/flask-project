@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} home {% endblock %}
+
+
+{% block content %} 
+
+<p>index</p>
+{{ value }}
+{{ y }}
+{{ numbers }}
+
+{% for i in numbers %}
+  {% if i%2==0 %}
+    <h1>{{ i }}</h1>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
